@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { Link, useHistory } from 'react-router-dom'
 
@@ -7,12 +7,17 @@ import { deleteDeck } from '../utils/api'
 function DeckTile({ deck }) {
     const history = useHistory()
     const deckId = deck._id
+    const [theDeck, setTheDeck] = useState(deck)
 
     const handleDelete = async () => {
         const abortController = new AbortController()
-        window.confirm("Delete this deck? \n \n You cannot get it back if you do!") ?
-        await deleteDeck(deckId, abortController.signal).then(history.go(0)) :
-        history.push("/")
+        if (window.confirm("Delete this deck? \n \n You cannot get it back if you do!")) {
+            await deleteDeck(deckId, abortController.signal)
+            setTheDeck({})
+            history.push("/")
+        } else {
+            history.go(0)
+        }
     }
 
     return (

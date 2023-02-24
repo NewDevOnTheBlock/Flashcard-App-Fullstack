@@ -39,7 +39,7 @@ function CreateDeck() {
           <li className="breadcrumb-item">
             <Link to="/">Home</Link>
           </li>
-          <li class="breadcrumb-item">Create Deck</li>
+          <li className="breadcrumb-item">Create Deck</li>
         </ol>
       </nav>
       <h2>Create Deck</h2>

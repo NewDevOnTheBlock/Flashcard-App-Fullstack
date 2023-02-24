@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { listCards } from "../utils/api";
+
 // components
 import StudyCard from "../Card/StudyCard";
 
