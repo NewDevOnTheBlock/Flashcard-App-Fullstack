@@ -76,11 +76,11 @@ async function deleteCard(req, res, next) {
 }
 
 // delete all cards related to a specific deck by the deck ID
-async function deleteDeck(req, res, next) {
-  const { deck_id } = req.params;
-  const removedDeck = await Card.deleteMany({ deck_id })
-  res.json({ removedDeck })
-}
+// async function deleteDeck(req, res, next) {
+//   const { deck_id } = req.params;
+//   const removedDeck = await service.delete({ deck_id })
+//   res.json({ removedDeck })
+// }
 
 
 module.exports = {

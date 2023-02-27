@@ -1,5 +1,5 @@
 const service = require("./decks.service");
-const cardService = require('../cards/cards.service')
+const cardsService = require('../cards/cards.service')
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
 // validate deck exists before performing actions on it
@@ -51,13 +51,10 @@ async function update(req, res, next) {
 // delete a specific deck by its ID
 async function destroyDeck(req, res, next) {
     const { deck_id } = req.params;
-    const deletedDeck = await service.destroy(deck_id)
-    
-    if (deletedDeck) {
-        await cardService.deleteDeck(deck_id)
-    }
+    await service.destroy(deck_id)
+    await cardsService.deleteDeck(deck_id)
 
-    res.json(deletedDeck);
+    res.json({ message: "Deck successfully deleted"});
 }
 
 module.exports = {
