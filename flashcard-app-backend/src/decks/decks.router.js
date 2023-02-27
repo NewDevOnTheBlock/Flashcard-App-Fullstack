@@ -6,7 +6,6 @@ const methodNotAllowed = require("../errors/methodNotAllowed");
 
 router.use("/:deck_id/cards", controller.deckExists, cardsRouter);
 
-
 router.route("/:deck_id")
     .get(controller.read)
     .put(controller.update)

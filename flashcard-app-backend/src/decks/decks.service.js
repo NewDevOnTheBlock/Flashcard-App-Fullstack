@@ -38,9 +38,10 @@ async function updateDeck(deck_id, updatedDeck) {
 // deletes a whole deck
 async function destroyDeck(deck_id) {
     try {
-        const deck = await Deck.find({ _id: deck_id })
-        await Card.deleteMany({ _id: { $in: deck.cards } });
-        return await Deck.findOneAndDelete({ _id: deck_id })
+        const deck = await Deck.findById({ _id: deck_id })
+        const cards = deck.cards;
+        await Card.deleteMany({ _id: {$in: cards} });
+        await Deck.findOneAndDelete({ _id: deck_id })
     } catch(err) {
         console.log(err)
     }

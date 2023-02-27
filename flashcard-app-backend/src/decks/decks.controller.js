@@ -1,5 +1,4 @@
 const service = require("./decks.service");
-const cardsService = require('../cards/cards.service')
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
 // validate deck exists before performing actions on it
