@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 // components
 import DeckTile from './DeckTile'
 
-function DeckList({ decks, setDecks }) {
+function DeckList({ decks, setAllDecks }) {
 
-    const listOfDecks = decks.map((deck, index) => <DeckTile key={index} setDecks={setDecks} deck={deck} />)
+    const listOfDecks = decks.map((deck, index) => <DeckTile key={index} setAllDecks={setAllDecks} deck={deck} />)
 
     return (
         <section>

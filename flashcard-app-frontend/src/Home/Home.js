@@ -13,7 +13,7 @@ function Home() {
     }, [])
 
     return (
-        <DeckList decks={allDecks} setDecks={setAllDecks} />
+        <DeckList decks={allDecks} setAllDecks={setAllDecks} />
     )
 }
 

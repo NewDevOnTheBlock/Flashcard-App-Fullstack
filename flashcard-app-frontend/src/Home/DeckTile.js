@@ -2,9 +2,9 @@ import React from 'react'
 
 import { Link, useHistory } from 'react-router-dom'
 
-import { deleteDeck, listDecks, setDecks } from '../utils/api'
+import { deleteDeck, listDecks } from '../utils/api'
 
-function DeckTile({ deck }) {
+function DeckTile({ deck, setAllDecks }) {
     const history = useHistory()
     const deckId = deck._id
 
@@ -13,7 +13,7 @@ function DeckTile({ deck }) {
         if (window.confirm("Delete this deck? \n \n You cannot get it back if you do!")) {
             await deleteDeck(deckId, abortController.signal)
             const deckList = await listDecks(abortController.signal)
-            setDecks(deckList)
+            setAllDecks(deckList)
         } else {
             history.go(0)
         }
