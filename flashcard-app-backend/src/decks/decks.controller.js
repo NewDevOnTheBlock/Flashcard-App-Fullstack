@@ -52,7 +52,6 @@ async function update(req, res, next) {
 async function destroyDeck(req, res, next) {
     const { deck_id } = req.params;
     await service.destroy(deck_id)
-    await cardsService.deleteDeck(deck_id)
 
     res.json({ message: "Deck successfully deleted"});
 }
