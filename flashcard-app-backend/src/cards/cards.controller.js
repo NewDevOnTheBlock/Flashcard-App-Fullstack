@@ -49,6 +49,13 @@ async function create(req, res, next) {
     });
 }
 
+async function updateCard(req, res, next) {
+  const { card_id } = req.params;
+  const updatedInfo = await service.update(card_id, req.body);
+  
+  res.json(updatedInfo)
+}
+
 // read a specific card in a deck by its ID
 function read(_req, res, _next) {
   const { card } = res.locals;
@@ -81,5 +88,6 @@ module.exports = {
   create: asyncErrorBoundary(create),
   read: [asyncErrorBoundary(cardExists), read],
   deleteCard: [asyncErrorBoundary(cardExists), deleteCard],
+  update: [asyncErrorBoundary(cardExists), updateCard],
   deleteDeck
 };

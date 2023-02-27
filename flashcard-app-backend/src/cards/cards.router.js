@@ -5,7 +5,7 @@ const methodNotAllowed = require("../errors/methodNotAllowed");
 
 router.route("/:card_id")
     .get(controller.read)
-    .put(controller.create)
+    .put(controller.update)
     .delete(controller.deleteCard)
     .all(methodNotAllowed)
 
