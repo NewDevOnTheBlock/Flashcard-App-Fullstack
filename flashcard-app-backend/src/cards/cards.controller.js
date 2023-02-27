@@ -89,5 +89,4 @@ module.exports = {
   read: [asyncErrorBoundary(cardExists), read],
   deleteCard: [asyncErrorBoundary(cardExists), deleteCard],
   update: [asyncErrorBoundary(cardExists), updateCard],
-  deleteDeck
 };
