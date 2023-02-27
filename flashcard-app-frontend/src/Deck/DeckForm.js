@@ -37,8 +37,8 @@ function DeckForm({ changeHandler, submitHandler, formData }) {
                     />
                 </label>
                 <div className="d-flex">
-                    <button type="button" className="btn btn-secondary" onClick={goHome}>Cancel</button>
-                    <button type="button" className="btn btn-primary" onClick={submitHandler}>Submit</button>
+                    <button type="button" className="btn btn-secondary" onClick={goHome}> <i class="fa fa-times" aria-hidden="true"></i> Cancel</button>
+                    <button type="button" className="btn btn-primary" onClick={submitHandler}><i class="fa fa-paper-plane" aria-hidden="true"></i> Submit</button>
                 </div>
                 
             </form>

@@ -12,7 +12,7 @@ function DeckList({ decks, setAllDecks }) {
         <section>
             <div>
                 <Link to="/decks/new">
-                    <button type="button" className="btn btn-primary">+ Create Deck</button>
+                    <button type="button" className="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> Create Deck</button>
                 </Link>
             </div>
             
