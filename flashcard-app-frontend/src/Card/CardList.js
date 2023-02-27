@@ -12,9 +12,19 @@ function CardList({ deckId }) {
       listCards(deckId, abortController.signal).then(setCards)
   }, [deckId])
 
+      // const handleDelete = async () => {
+    //     const abortController = new AbortController()
+    //     if (window.confirm("Delete this card? \n \n You cannot get it back if you do!")) {
+    //         await deleteCard(deckId, cardId, abortController.signal)
+    //         history.go(0)
+    //     } else {
+    //         history.push("/")
+    //     }
+    // }
+
     const cardList = cards.map((card, index) => {
         return (
-            <CardTile deckId={ deckId } card={ card } key={ index }/>
+            <CardTile setCards={setCards} deckId={deckId} card={card} key={index} />
         )
     })
 

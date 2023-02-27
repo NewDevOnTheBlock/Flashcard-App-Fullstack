@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, useHistory, useRouteMatch } from 'react-router-dom';
-import { deleteCard } from "../utils/api";
+import { deleteCard, listCards } from "../utils/api";
 
-function CardTile({ deckId, card, index }) {
+function CardTile({ deckId, card, index, setCards  }) {
     const history = useHistory()
     const { url } = useRouteMatch();
     const cardId = card._id;
@@ -11,7 +11,8 @@ function CardTile({ deckId, card, index }) {
         const abortController = new AbortController()
         if (window.confirm("Delete this card? \n \n You cannot get it back if you do!")) {
             await deleteCard(deckId, cardId, abortController.signal)
-            history.go(0)
+            const remainingCards = await listCards(deckId, abortController.signal)
+            setCards(remainingCards)
         } else {
             history.push("/")
         }

@@ -7,6 +7,10 @@ import CardList from '../Card/CardList'
 import { readDeck } from '../utils/api/index';
 import { deleteDeck } from '../utils/api/index';
 
+// pass down  the setDeck to the card tiles
+// on handleDelete(cardTile), call readDeck to get the deck again, store in variable
+// then use setDeck (passed from deck.js) to set the deck of the cards
+
 function Deck() {
     const [deck, setDeck] = useState({});
     const { deckId } = useParams();
@@ -14,7 +18,7 @@ function Deck() {
     const history = useHistory();
     
     useEffect(() => {
-        setDeck([])
+        setDeck({})
         const abortController = new AbortController();
         readDeck(deckId, abortController.signal).then(setDeck)
     }, [deckId])
