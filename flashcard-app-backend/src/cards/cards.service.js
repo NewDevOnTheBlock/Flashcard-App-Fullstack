@@ -9,7 +9,7 @@ async function readCard(card_id) {
 // list (for test purposes)
 async function listCards(deck_id) {
   const deck = await Deck.findById({ _id: deck_id });
-  return Card.find({ _id: {$in: deck.cards} });
+  return await Card.find({ _id: {$in: deck.cards} });
 }
 
 // create
@@ -29,7 +29,8 @@ async function destroyCard(card_id) {
 
 // delete all acards from collection upon deck deletion
 async function deleteDeck(deck_id) {
-  return await Card.remove({ deck_id })
+  const deck = await Deck.findById({ _id: deck_id });
+  return await Card.findByIdAndDelete({ _id: {$in: deck.cards} }); 
 }
 
 module.exports = {
