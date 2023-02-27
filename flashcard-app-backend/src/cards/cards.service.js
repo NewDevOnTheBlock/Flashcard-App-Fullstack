@@ -28,10 +28,7 @@ async function destroyCard(card_id) {
 }
 
 // delete all acards from collection upon deck deletion
-async function deleteDeck(deck_id) {
-  const deck = await Deck.findById({ _id: deck_id });
-  return await Card.deleteMany({ _id: { $in: deck.cards } }); 
-}
+
 
 module.exports = {
   list: listCards,
@@ -39,5 +36,4 @@ module.exports = {
   read: readCard,
   update: updateCard,
   delete: destroyCard,
-  deleteDeck
 }

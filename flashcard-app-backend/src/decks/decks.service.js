@@ -1,5 +1,5 @@
 const Deck = require("../models/deckModel")
-
+const Card = require("../models/cardModel")
 // retrieves a list of decks
 async function getDecks() {
     return await Deck.find({}).sort({ createdAt: 1 })
@@ -38,6 +38,8 @@ async function updateDeck(deck_id, updatedDeck) {
 // deletes a whole deck
 async function destroyDeck(deck_id) {
     try {
+        const deck = await Deck.find({ _id: deck_id })
+        await Card.deleteMany({ _id: { $in: deck.cards } });
         return await Deck.findOneAndDelete({ _id: deck_id })
     } catch(err) {
         console.log(err)
