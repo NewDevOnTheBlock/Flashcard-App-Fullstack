@@ -40,7 +40,7 @@ function StudyCard({ cards }) {
 
     if (side) {
         return (
-            <main className="card" style={{padding: "12px"}}>
+            <main className="card" style={{ padding: "24px" }}>
                 <div className="d-flex justify-content-between">
                     <p>{currentCard.front}</p>
                     <p>Card {cardIndex + 1} of {cards.length}</p>

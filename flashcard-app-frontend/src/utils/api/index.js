@@ -208,6 +208,7 @@ export async function updateCard(deckId, updatedCard, signal) {
     headers,
     body: JSON.stringify(updatedCard),
   };
+  
   return await fetchJson(url, options, updatedCard);
 }
 

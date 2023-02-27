@@ -12,7 +12,7 @@ function CardForm({ formData, changeHandler, submitHandler }) {
         return <p>Loading...</p>
     } else {
         return (
-            <form onSubmit={submitHandler} className="card">
+            <form onSubmit={submitHandler} className="card" style={{ padding: "24px"}}>
                 <label htmlFor="front" className="d-flex flex-column">
                     Front
                     <textarea 

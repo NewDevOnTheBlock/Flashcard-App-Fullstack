@@ -5,8 +5,7 @@ import { readCard, readDeck, updateCard } from "../utils/api";
 import CardForm from "./CardForm";
 
 function EditCard() {
-  const history = useHistory();
-
+  const history = useHistory()
   const [deck, setDeck] = useState({});
   const [formData, setFormData] = useState({});
 
@@ -14,8 +13,10 @@ function EditCard() {
   
   useEffect(() => {
     const abortController = new AbortController();
+
     readDeck(deckId, abortController.signal).then(setDeck);
     readCard(deckId, cardId, abortController.signal).then(setFormData);
+
     return () => abortController.abort();
   }, [deckId, cardId]);
 
@@ -23,13 +24,16 @@ function EditCard() {
     setFormData({
       ...formData,
       [target.name]: target.value,
+  
     });
   };
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
     const abortController = new AbortController();
-    updateCard(deckId, formData, abortController.signal).then(history.goBack());
+    
+    await updateCard(deckId, formData, abortController.signal)
+    history.push(`/decks/${deckId}`)
   };
 
   if (!deck._id) {

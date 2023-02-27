@@ -11,7 +11,7 @@ function DeckForm({ changeHandler, submitHandler, formData }) {
         return <p>Loading...</p>
     } else {
         return (
-            <form onSubmit={submitHandler} className="card">
+            <form onSubmit={submitHandler} className="card" style={{ padding: "24px" }}>
                 <label htmlFor="name" className="d-flex flex-column">
                     Name:
                     <input
